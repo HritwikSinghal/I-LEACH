@@ -1,7 +1,8 @@
 function Sensors=SendReceivePackets(Sensors,Model,Sender,PacketType,Receiver)
-    %% Developed by Amin Nazari 
-% 	aminnazari91@gmail.com 
-%	0918 546 2272
+%% Standard Leach Developed by Amin Nazari 
+%   aminnazari91@gmail.com 
+% 0918 546 2272
+%% Improved Leach Developed by Hritwik Singhal and Nishita Agarwal 
    global srp rrp sdp rdp 
    sap=0;      % Send a packet
    rap=0;      % Receive a packet

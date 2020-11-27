@@ -1,7 +1,9 @@
 function Sensors=ConfigureSensors(Model,n,GX,GY)
-%% Developed by Amin Nazari 
+%% Standard Leach Developed by Amin Nazari 
 % 	aminnazari91@gmail.com 
 %	0918 546 2272
+%% Improved Leach Developed by Hritwik Singhal and Nishita Agarwal 
+
 %% Configuration EmptySensor
 EmptySensor.xd=0;
 EmptySensor.yd=0;

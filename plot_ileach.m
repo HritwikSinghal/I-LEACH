@@ -1,7 +1,8 @@
 function [deadNum,circlex,circley]=plot_ileach(Sensors,Model)
-    %% Developed by Amin Nazari 
-% 	aminnazari91@gmail.com 
-%	0918 546 2272
+%% Standard Leach Developed by Amin Nazari 
+%   aminnazari91@gmail.com 
+%   0918 546 2272
+%% Improved Leach Developed by Hritwik Singhal and Nishita Agarwal 
     deadNum=0;
     n=Model.n;
     numRX=Model.numRx;
