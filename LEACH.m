@@ -62,6 +62,7 @@ RRP(1)=rrp;
 SDP(1)=sdp;
 RDP(1)=rdp;
 
+x=0;
 %% Main loop program
 for r=1:1:Model.rmax
 
@@ -105,7 +106,7 @@ for r=1:1:Model.rmax
     
 %%%%%%%%%%%%%%%%%%%%%%% cluster head election %%%%%%%%%%%%%%%%%%%
     %Selection Candidate Cluster Head Based on LEACH Set-up Phase
-    [TotalCH,Sensors]=SelectCH(Sensors,Model,r); 
+    [TotalCH,Sensors]=SelectCH_old(Sensors,Model,r); 
     
     %Broadcasting CHs to All Sensor that are in Radio Rage CH.
     for i=1:length(TotalCH)
@@ -220,9 +221,24 @@ for r=1:1:Model.rmax
        break;
        
    end
-  
+STATISTICS.Alive(r+1)=n-deadNum;
+STATISTICS.Energy(r+1)=SumEnergyAllSensor(r+1);
+x=r+1;
 end % for r=0:1:rmax
 
+r=1:x-1;
+figure(2)
+plot(r,STATISTICS.Alive(r+1));
+xlabel 'Rounds';
+ylabel 'No of live sensor Nodes';
+title('Life time of Sensor Nodes')
+
+
+figure(3)
+plot(r,STATISTICS.Energy(r+1));
+xlabel 'Rounds';
+ylabel 'Energy(in j)';
+title('Avergae Residual energy ');
 disp('End of Simulation');
 toc;
 disp('Create Report...')

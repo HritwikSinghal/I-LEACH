@@ -11,7 +11,7 @@ tic;
 
 %% Create sensor nodes, Set Parameters and Create Energy Model 
 %%%%%%%%%%%%%%%%%%%%%%%%% Initial Parameters %%%%%%%%%%%%%%%%%%%%%%%
-n=400;                                  %Number of Nodes in the field
+n=200;                                  %Number of Nodes in the field
 [Area,Model]=setParameters(n);     		%Set Parameters Sensors and Network
 
 %%%%%%%%%%%%%%%%%%%%%%%%% configuration Sensors %%%%%%%%%%%%%%%%%%%%
@@ -217,7 +217,7 @@ for r=1:1:Model.rmax
    end
 
 
-STATISTICS.Alive(r+1)=200-deadNum;
+STATISTICS.Alive(r+1)=n-deadNum;
 STATISTICS.Energy(r+1)=SumEnergyAllSensor(r+1);
 x=r+1;
 end % for r=0:1:rmax
