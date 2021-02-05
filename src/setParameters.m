@@ -16,7 +16,7 @@ p=0.1;
 
 %%%%%%%%%%%%%%%%%%%%%%%%% Energy Model (all values in Joules)%%%%%%%%%%%
 %Initial Energy 
-Eo=0.5;
+Eo=2;
 
 %Eelec=Etx=Erx
 ETX=50*0.000000001;

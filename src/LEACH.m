@@ -62,6 +62,7 @@ RRP(1)=rrp;
 SDP(1)=sdp;
 RDP(1)=rdp;
 
+x=0;
 %% Main loop program
 for r=1:1:Model.rmax
 
@@ -122,21 +123,6 @@ for r=1:1:Model.rmax
     
 %%%%%%%%%%%%%%%%%%%%%%% end of cluster head election phase %%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%% plot network status in end of set-up phase 
-
-    for i=1:n
-        
-        if (Sensors(i).type=='N' && Sensors(i).dis2ch<Sensors(i).dis2sink && ...
-                Sensors(i).E>0)
-            
-            % XL=[Sensors(i).xd ,Sensors(Sensors(i).MCH).xd];
-            % YL=[Sensors(i).yd ,Sensors(Sensors(i).MCH).yd];
-            hold on
-            % line(XL,YL)
-            
-        end
-        
-    end
     
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% steady-state phase %%%%%%%%%%%%%%%%%
     NumPacket=Model.NumPacket;
@@ -220,8 +206,25 @@ for r=1:1:Model.rmax
        break;
        
    end
-  
+STATISTICS.Alive(r+1)=n-deadNum;
+STATISTICS.Energy(r+1)=SumEnergyAllSensor(r+1);
+x=r+1;
 end % for r=0:1:rmax
+r=1:x-1;
+figure(2)
+plot(r,STATISTICS.Alive(r+1));
+xlabel 'Rounds';
+ylabel 'No of live sensor Nodes';
+title('Life time of Sensor Nodes')
+
+
+
+
+figure(3)
+plot(r,STATISTICS.Energy(r+1));
+xlabel 'Rounds';
+ylabel 'Energy(in j)';
+title('Average Residual energy ');
 
 disp('End of Simulation');
 toc;
