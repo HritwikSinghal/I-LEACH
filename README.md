@@ -1,6 +1,6 @@
-# I-LEACH
-Improved LEACH Protocol for Increasing Network Lifetime Based on Circular Patches Clustering by Hritwik Singhal and Nishita Agarwal.
-The implementation of I-LEACH is in MATLAB.
+# Improved LEACH Protocol for Increasing Network Lifetime Based on Circular Patches Clustering.
+
+This is the implementation of "I-Leach" protocol, proposed by "Awj R. Tarawneh, Banan Malahmeh, Abdullah Al-Odienat" in their paper "DOI: 10.13189/ujas.2020.070102", in MATLAB by Hritwik Singhal and Nishita Agarwal.
 
 ```
 In LEACH protocol, the cluster heads are distributed randomly, near or far from the base station.
