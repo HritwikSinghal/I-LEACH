@@ -4,8 +4,8 @@ function [Area,Model]=setParameters(n)
 %	0918 546 2272
 %%%%%%%%%%%%%%%%%%%%%%%%% Set Inital PARAMETERS %%%%%%%%%%%%%%%%%%%%%%%%
 %Field Dimensions - x and y maximum (in meters)
-Area.x=n;
-Area.y=n;
+Area.x=1000;
+Area.y=1000;
 
 %Sink Motion pattern 
 Sinkx=0.5*Area.x;
@@ -23,7 +23,7 @@ ETX=50*0.000000001;
 ERX=50*0.000000001;
 
 %Transmit Amplifier types
-Efs=10*0.000000000001;
+Efs=10e-12;
 Emp=0.0013*0.000000000001;
 
 %Data Aggregation Energy
@@ -34,7 +34,7 @@ do=sqrt(Efs/Emp);
 
 %%%%%%%%%%%%%%%%%%%%%%%%% Run Time Parameters %%%%%%%%%%%%%%%%%%%%%%%%%
 %maximum number of rounds
-rmax=5000;
+ rmax=200;
 
 %Data packet size
 DpacketLen=4000;

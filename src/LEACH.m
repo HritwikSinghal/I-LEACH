@@ -10,7 +10,7 @@ tic;
 
 %% Create sensor nodes, Set Parameters and Create Energy Model 
 %%%%%%%%%%%%%%%%%%%%%%%%% Initial Parameters %%%%%%%%%%%%%%%%%%%%%%%
-n=100;                                  %Number of Nodes in the field
+n=200;                                  %Number of Nodes in the field
 [Area,Model]=setParameters(n);     		%Set Parameters Sensors and Network
 
 %%%%%%%%%%%%%%%%%%%%%%%%% configuration Sensors %%%%%%%%%%%%%%%%%%%%
@@ -129,10 +129,10 @@ for r=1:1:Model.rmax
         if (Sensors(i).type=='N' && Sensors(i).dis2ch<Sensors(i).dis2sink && ...
                 Sensors(i).E>0)
             
-            XL=[Sensors(i).xd ,Sensors(Sensors(i).MCH).xd];
-            YL=[Sensors(i).yd ,Sensors(Sensors(i).MCH).yd];
+            % XL=[Sensors(i).xd ,Sensors(Sensors(i).MCH).xd];
+            % YL=[Sensors(i).yd ,Sensors(Sensors(i).MCH).yd];
             hold on
-            line(XL,YL)
+            % line(XL,YL)
             
         end
         
