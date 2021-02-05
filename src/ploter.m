@@ -9,20 +9,26 @@ function deadNum=ploter(Sensors,Model)
         if (Sensors(i).E>0)
             
             if(Sensors(i).type=='N' )      
-                plot(Sensors(i).xd,Sensors(i).yd,'o');     
+                % plot(Sensors(i).xd,Sensors(i).yd,'o');
+                plot(Sensors(i).xd,Sensors(i).yd,'ko', 'MarkerSize', 5, 'MarkerFaceColor', 'k');
             else %Sensors.type=='C'       
-                plot(Sensors(i).xd,Sensors(i).yd,'kx','MarkerSize',10);
+                % plot(Sensors(i).xd,Sensors(i).yd,'kx','MarkerSize',10);
+                plot(Sensors(i).xd,Sensors(i).yd,'ko', 'MarkerSize', 5, 'MarkerFaceColor', 'r');
             end
             
         else
             deadNum=deadNum+1;
-            plot(Sensors(i).xd,Sensors(i).yd,'red .');
+            % plot(Sensors(i).xd,Sensors(i).yd,'red .');
+            plot(Sensors(i).xd,Sensors(i).yd,'ko', 'MarkerSize',5, 'MarkerFaceColor', 'w');
         end
         
         hold on;
         
     end 
-    plot(Sensors(n+1).xd,Sensors(n+1).yd,'g*','MarkerSize',15); 
+    % plot(Sensors(n+1).xd,Sensors(n+1).yd,'g*','MarkerSize',15);
+    
+    plot(Sensors(n+1).xd,Sensors(n+1).yd,'bo', 'MarkerSize', 8, 'MarkerFaceColor', 'b');
+    text(Sensors(n+1).xd+1,Sensors(n+1).yd-1,'Sink');
     axis square
 
 end
