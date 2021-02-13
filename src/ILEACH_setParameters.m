@@ -1,7 +1,9 @@
 function [Area,Model]=ILEACH_setParameters(n)
-%% Developed by Amin Nazari 
-% 	aminnazari91@gmail.com 
-%	0918 546 2272
+%% Standard Leach Developed by Amin Nazari 
+%   aminnazari91@gmail.com 
+%   0918 546 2272
+%% Improved Leach Developed by Hritwik Singhal and Nishita Agarwal 
+
 %%%%%%%%%%%%%%%%%%%%%%%%% Set Inital PARAMETERS %%%%%%%%%%%%%%%%%%%%%%%%
 %Field Dimensions - x and y maximum (in meters)
 Area.x=1000;
