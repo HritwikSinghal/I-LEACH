@@ -13,7 +13,6 @@ Area.y=1000;
 Sinkx=0.5*Area.x;
 Sinky=Sinkx;
 
-
 %Optimal Election Probability of a node to become cluster head
 p=0.1;
 
@@ -51,6 +50,7 @@ NumPacket=10;
 %Radio Range
 RR=0.5*Area.x*sqrt(2);
 
+% I-LEACH
 numRx=fix(sqrt(p*n));
 dr=Area.x/numRx;
 %%%%%%%%%%%%%%%%%%%%%%%%% END OF PARAMETERS %%%%%%%%%%%%%%%%%%%%%%%%
@@ -72,6 +72,10 @@ Model.DpacketLen=DpacketLen;
 Model.HpacketLen=HpacketLen;
 Model.NumPacket=NumPacket;
 Model.RR=RR;
+
+
+% I-LEACH
 Model.numRx=numRx;
 Model.dr=dr;
+
 end
