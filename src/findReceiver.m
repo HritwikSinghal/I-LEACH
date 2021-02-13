@@ -3,6 +3,7 @@ function Receiver=findReceiver(Sensors,Model,Sender,SenderRR)
 %   aminnazari91@gmail.com 
 %   0918 546 2272
 %% Improved Leach Developed by Hritwik Singhal and Nishita Agarwal 
+
     Receiver=[];
     %% Calculate Distance All Sensor With Sender 
     n=Model.n;

@@ -1,7 +1,9 @@
 function Sender=findSender(Sensors,Model,Receiver)
-   %% Developed by Amin Nazari 
-% 	aminnazari91@gmail.com 
-%	0918 546 2272 
+%% Standard Leach Developed by Amin Nazari 
+%   aminnazari91@gmail.com 
+%   0918 546 2272
+%% Improved Leach Developed by Hritwik Singhal and Nishita Agarwal 
+
     Sender=[];
  
     n=Model.n;

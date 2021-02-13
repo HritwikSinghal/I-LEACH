@@ -1,7 +1,7 @@
 %% Standard Leach Developed by Amin Nazari 
 %   aminnazari91@gmail.com 
 %   0918 546 2272
-%% Improved Leach Developed by Hritwik Singhal and Nishita Agarwal 
+%% Improved Leach Developed by Hritwik Singhal and Nishita Agarwal
 
 clc;
 clear;
