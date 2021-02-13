@@ -5,7 +5,7 @@ function Receiver=findReceiver(Sensors,Model,Sender,SenderRR)
 %% Improved Leach Developed by Hritwik Singhal and Nishita Agarwal 
 
     Receiver=[];
-    %% Calculate Distance All Sensor With Sender 
+    %% Calculate Distance All Sensor With Sender [ Note that for doing so you need to access the global fig variable]
     n=Model.n;
     D=zeros(1,n);
     

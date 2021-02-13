@@ -13,7 +13,6 @@ Area.y=1000;
 Sinkx=0.5*Area.x;
 Sinky=Sinkx;
 
-
 %Optimal Election Probability of a node to become cluster head
 p=0.1;
 
@@ -50,7 +49,6 @@ NumPacket=10;
 
 %Radio Range
 RR=0.5*Area.x*sqrt(2);
-
 %%%%%%%%%%%%%%%%%%%%%%%%% END OF PARAMETERS %%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%% Save in Model %%%%%%%%%%%%%%%%%%%%%%%%%%%%
