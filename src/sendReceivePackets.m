@@ -1,4 +1,4 @@
-function Sensors=SendReceivePackets(Sensors,Model,Sender,PacketType,Receiver)
+function Sensors=sendReceivePackets(Sensors,Model,Sender,PacketType,Receiver)
     %% Developed by Amin Nazari 
 % 	aminnazari91@gmail.com 
 %	0918 546 2272

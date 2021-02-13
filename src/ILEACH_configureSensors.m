@@ -1,4 +1,4 @@
-function Sensors=LEACH_ConfigureSensors(Model,n,GX,GY)
+function Sensors=ILEACH_configureSensors(Model,n,GX,GY)
 %% Developed by Amin Nazari 
 % 	aminnazari91@gmail.com 
 %	0918 546 2272

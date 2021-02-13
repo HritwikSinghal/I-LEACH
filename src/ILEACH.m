@@ -14,9 +14,9 @@ n=200;                                  %Number of Nodes in the field
 [Area,Model]=ILEACH_setParameters(n);     		%Set Parameters Sensors and Network
 
 %%%%%%%%%%%%%%%%%%%%%%%%% configuration Sensors %%%%%%%%%%%%%%%%%%%%
-CreateRandomSen(Model,Area);            %Create a random scenario
+createRandomSen(Model,Area);            %Create a random scenario
 load Locations                          %Load sensor Location
-Sensors=ILEACH_ConfigureSensors(Model,n,X,Y);
+Sensors=ILEACH_configureSensors(Model,n,X,Y);
 ILEACH_plotter(Sensors,Model);                  %Plot sensors
 
 %%%%%%%%%%%%%%%%%%%%%%%%%% Parameters initialization %%%%%%%%%%%%%%%%
@@ -48,13 +48,13 @@ rdp=0;          %counter number of receive data packets
 %Sink broadcast start message to all nodes
 Sender=n+1;     %Sink
 Receiver=1:n;   %All nodes
-Sensors=SendReceivePackets(Sensors,Model,Sender,'Hello',Receiver);
+Sensors=sendReceivePackets(Sensors,Model,Sender,'Hello',Receiver);
 
 % All sensor send location information to Sink .
  Sensors=disToSink(Sensors,Model);
 % Sender=1:n;     %All nodes
 % Receiver=n+1;   %Sink
-% Sensors=SendReceivePackets(Sensors,Model,Sender,'Hello',Receiver);
+% Sensors=sendReceivePackets(Sensors,Model,Sender,'Hello',Receiver);
 
 %Save metrics
 SRP(1)=srp;
@@ -106,7 +106,7 @@ for r=1:1:Model.rmax
     
 %%%%%%%%%%%%%%%%%%%%%%% cluster head election %%%%%%%%%%%%%%%%%%%
     %Selection Candidate Cluster Head Based on LEACH Set-up Phase
-    [TotalCH,Sensors]=ILEACH_SelectCH(Sensors,Model,r); 
+    [TotalCH,Sensors]=ILEACH_selectCH(Sensors,Model,r); 
     
     %Broadcasting CHs to All Sensor that are in Radio Rage CH.
     for i=1:length(TotalCH)
@@ -114,12 +114,12 @@ for r=1:1:Model.rmax
         Sender=TotalCH(i).id;
         SenderRR=Model.RR;
         Receiver=findReceiver(Sensors,Model,Sender,SenderRR);   
-        Sensors=SendReceivePackets(Sensors,Model,Sender,'Hello',Receiver);
+        Sensors=sendReceivePackets(Sensors,Model,Sender,'Hello',Receiver);
             
     end 
     
     %Sensors join to nearest CH 
-    Sensors=JoinToNearestCH(Sensors,Model,TotalCH);
+    Sensors=joinToNearestCH(Sensors,Model,TotalCH);
     
 %%%%%%%%%%%%%%%%%%%%%%% end of cluster head election phase %%%%%%
 
@@ -151,7 +151,7 @@ for r=1:1:Model.rmax
             
             Receiver=TotalCH(j).id;
             Sender=findSender(Sensors,Model,Receiver); 
-            Sensors=SendReceivePackets(Sensors,Model,Sender,'Data',Receiver);
+            Sensors=sendReceivePackets(Sensors,Model,Sender,'Data',Receiver);
             
         end
         
@@ -163,7 +163,7 @@ for r=1:1:Model.rmax
             
         Receiver=n+1;               %Sink
         Sender=TotalCH(i).id;       %CH 
-        Sensors=SendReceivePackets(Sensors,Model,Sender,'Data',Receiver);
+        Sensors=sendReceivePackets(Sensors,Model,Sender,'Data',Receiver);
             
     end
 %%% send data packet directly from other nodes(that aren't in each cluster) to Sink
@@ -171,7 +171,7 @@ for r=1:1:Model.rmax
         if(Sensors(i).MCH==Sensors(n+1).id)
             Receiver=n+1;               %Sink
             Sender=Sensors(i).id;       %Other Nodes 
-            Sensors=SendReceivePackets(Sensors,Model,Sender,'Data',Receiver);
+            Sensors=sendReceivePackets(Sensors,Model,Sender,'Data',Receiver);
         end
     end
  

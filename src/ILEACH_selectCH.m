@@ -1,4 +1,4 @@
-function [CH,Sensors]=ILEACH_SelectCH(Sensors,Model,r)
+function [CH,Sensors]=ILEACH_selectCH(Sensors,Model,r)
     %% Developed by Amin Nazari 
 % 	aminnazari91@gmail.com 
 %	0918 546 2272
