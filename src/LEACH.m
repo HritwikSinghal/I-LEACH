@@ -11,13 +11,13 @@ tic;
 %% Create sensor nodes, Set Parameters and Create Energy Model 
 %%%%%%%%%%%%%%%%%%%%%%%%% Initial Parameters %%%%%%%%%%%%%%%%%%%%%%%
 n=200;                                  %Number of Nodes in the field
-[Area,Model]=setParameters(n);     		%Set Parameters Sensors and Network
+[Area,Model]=LEACH_setParameters(n);     		%Set Parameters Sensors and Network
 
 %%%%%%%%%%%%%%%%%%%%%%%%% configuration Sensors %%%%%%%%%%%%%%%%%%%%
 CreateRandomSen(Model,Area);            %Create a random scenario
 load Locations                          %Load sensor Location
 Sensors=ConfigureSensors(Model,n,X,Y);
-ploter(Sensors,Model);                  %Plot sensors
+LEACH_plotter(Sensors,Model);                  %Plot sensors
 
 %%%%%%%%%%%%%%%%%%%%%%%%%% Parameters initialization %%%%%%%%%%%%%%%%
 countCHs=0;         %counter for CHs
@@ -94,7 +94,7 @@ for r=1:1:Model.rmax
     end
     
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% plot sensors %%%%%%%%%%%%%%%%%%%%%%%
-    deadNum=ploter(Sensors,Model);
+    deadNum=LEACH_plotter(Sensors,Model);
     
     %Save r'th period When the first node dies
     if (deadNum>=1)      
@@ -106,7 +106,7 @@ for r=1:1:Model.rmax
     
 %%%%%%%%%%%%%%%%%%%%%%% cluster head election %%%%%%%%%%%%%%%%%%%
     %Selection Candidate Cluster Head Based on LEACH Set-up Phase
-    [TotalCH,Sensors]=SelectCH_old(Sensors,Model,r); 
+    [TotalCH,Sensors]=LEACH_SelectCH(Sensors,Model,r); 
     
     %Broadcasting CHs to All Sensor that are in Radio Rage CH.
     for i=1:length(TotalCH)
@@ -144,7 +144,7 @@ for r=1:1:Model.rmax
     for i=1:1:1%NumPacket 
         
         %Plotter     
-        deadNum=ploter(Sensors,Model);
+        deadNum=LEACH_plotter(Sensors,Model);
         
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% All sensor send data packet to  CH 
         for j=1:length(TotalCH)

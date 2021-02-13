@@ -1,4 +1,4 @@
-function deadNum=ploter(Sensors,Model)
+function deadNum=LEACH_plotter(Sensors,Model)
     %% Developed by Amin Nazari 
 % 	aminnazari91@gmail.com 
 %	0918 546 2272
