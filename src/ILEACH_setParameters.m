@@ -1,4 +1,4 @@
-function [Area,Model]=setParameters(n)
+function [Area,Model]=ILEACH_setParameters(n)
 %% Standard Leach Developed by Amin Nazari 
 % 	aminnazari91@gmail.com 
 %	0918 546 2272
