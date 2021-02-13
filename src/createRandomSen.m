@@ -1,4 +1,4 @@
-function CreateRandomSen(Model,Area)
+function createRandomSen(Model,Area)
 %% Standard Leach Developed by Amin Nazari 
 %   aminnazari91@gmail.com 
 %   0918 546 2272

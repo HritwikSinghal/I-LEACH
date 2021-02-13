@@ -15,12 +15,12 @@ n=200;                                  %Number of Nodes in the field
 [Area,Model]=setParameters(n);     		%Set Parameters Sensors and Network
 
 %%%%%%%%%%%%%%%%%%%%%%%%% configuration Sensors %%%%%%%%%%%%%%%%%%%%
-CreateRandomSen(Model,Area);            %Create a random scenario
+createRandomSen(Model,Area);            %Create a random scenario
 load Locations                          %Load sensor Location
-Sensors=ConfigureSensors(Model,n,X,Y);
+Sensors=ILEACH_configureSensors(Model,n,X,Y);
 % ploter(Sensors,Model);                  %Plot sensors
 deadNum=0;          %Number of dead nodes
-[deadNum,circlex,circley] =plot_ileach(Sensors,Model);
+[deadNum,circlex,circley] =ILEACH_plotter(Sensors,Model);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%% Parameters initialization %%%%%%%%%%%%%%%%
 countCHs=0;         %counter for CHs
@@ -52,13 +52,13 @@ rdp=0;          %counter number of receive data packets
 %Sink broadcast start message to all nodes
 Sender=n+1;     %Sink
 Receiver=1:n;   %All nodes
-Sensors=SendReceivePackets(Sensors,Model,Sender,'Hello',Receiver);
+Sensors=sendReceivePackets(Sensors,Model,Sender,'Hello',Receiver);
 
 % All sensor send location information to Sink .
  Sensors=disToSink(Sensors,Model);
 % Sender=1:n;     %All nodes
 % Receiver=n+1;   %Sink
-% Sensors=SendReceivePackets(Sensors,Model,Sender,'Hello',Receiver);
+% Sensors=sendReceivePackets(Sensors,Model,Sender,'Hello',Receiver);
 
 %Save metrics
 SRP(1)=srp;
@@ -99,7 +99,7 @@ for r=1:1:Model.rmax
     end
     
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% plot sensors %%%%%%%%%%%%%%%%%%%%%%%
-    [deadNum,circlex,circley] =plot_ileach(Sensors,Model);
+    [deadNum,circlex,circley] =ILEACH_plotter(Sensors,Model);
     
     %Save r'th period When the first node dies
     if (deadNum>=1)      
@@ -111,7 +111,7 @@ for r=1:1:Model.rmax
     
 %%%%%%%%%%%%%%%%%%%%%%% cluster head election %%%%%%%%%%%%%%%%%%%
     %Selection Candidate Cluster Head Based on LEACH Set-up Phase
-    [TotalCH,Sensors]=SelectCH(Sensors,Model,r, circlex,circley); 
+    [TotalCH,Sensors]=ILEACH_selectCH(Sensors,Model,r, circlex,circley); 
     
     %Broadcasting CHs to All Sensor that are in Radio Rage CH.
     for i=1:length(TotalCH)
@@ -119,12 +119,12 @@ for r=1:1:Model.rmax
         Sender=TotalCH(i).id;
         SenderRR=Model.RR;
         Receiver=findReceiver(Sensors,Model,Sender,SenderRR);   
-        Sensors=SendReceivePackets(Sensors,Model,Sender,'Hello',Receiver);
+        Sensors=sendReceivePackets(Sensors,Model,Sender,'Hello',Receiver);
             
     end 
     
     %Sensors join to nearest CH 
-    Sensors=JoinToNearestCH(Sensors,Model,TotalCH);
+    Sensors=joinToNearestCH(Sensors,Model,TotalCH);
     
 %%%%%%%%%%%%%%%%%%%%%%% end of cluster head election phase %%%%%%
 
@@ -135,14 +135,14 @@ for r=1:1:Model.rmax
     for i=1:1:1%NumPacket 
         
         %Plotter     
-        [deadNumo,circlex,circley]=plot_ileach(Sensors,Model);
+        [deadNumo,circlex,circley]=ILEACH_plotter(Sensors,Model);
         
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% All sensor send data packet to  CH 
         for j=1:length(TotalCH)
             
             Receiver=TotalCH(j).id;
             Sender=findSender(Sensors,Model,Receiver); 
-            Sensors=SendReceivePackets(Sensors,Model,Sender,'Data',Receiver);
+            Sensors=sendReceivePackets(Sensors,Model,Sender,'Data',Receiver);
            
         end
         
@@ -154,7 +154,7 @@ for r=1:1:Model.rmax
             
         Receiver=n+1;               %Sink
         Sender=TotalCH(i).id;       %CH 
-        Sensors=SendReceivePackets(Sensors,Model,Sender,'Data',Receiver);
+        Sensors=sendReceivePackets(Sensors,Model,Sender,'Data',Receiver);
        
         
     end
@@ -164,7 +164,7 @@ for r=1:1:Model.rmax
         if(Sensors(i).MCH==Sensors(n+1).id)
             Receiver=n+1;               %Sink
             Sender=Sensors(i).id;       %Other Nodes 
-            Sensors=SendReceivePackets(Sensors,Model,Sender,'Data',Receiver);
+            Sensors=sendReceivePackets(Sensors,Model,Sender,'Data',Receiver);
             
 
         end

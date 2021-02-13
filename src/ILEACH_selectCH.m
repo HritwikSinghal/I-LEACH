@@ -1,4 +1,4 @@
-function [CH,Sensors]=SelectCH(Sensors,Model,rowx,circlex,circley)
+function [CH,Sensors]=ILEACH_selectCH(Sensors,Model,rowx,circlex,circley)
 %% Standard Leach Developed by Amin Nazari 
 %   aminnazari91@gmail.com 
 %   0918 546 2272

@@ -1,4 +1,4 @@
-function Sensors=JoinToNearestCH(Sensors,Model,TotalCH)
+function Sensors=joinToNearestCH(Sensors,Model,TotalCH)
 %% Standard Leach Developed by Amin Nazari 
 %   aminnazari91@gmail.com 
 %   0918 546 2272

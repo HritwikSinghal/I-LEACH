@@ -1,4 +1,4 @@
-function [deadNum,circlex,circley]=plot_ileach(Sensors,Model)
+function [deadNum,circlex,circley]=ILEACH_plotter(Sensors,Model)
 %% Standard Leach Developed by Amin Nazari 
 %   aminnazari91@gmail.com 
 %   0918 546 2272
