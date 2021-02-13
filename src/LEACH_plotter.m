@@ -11,9 +11,11 @@ function deadNum=LEACH_plotter(Sensors,Model)
         if (Sensors(i).E>0)
             
             if(Sensors(i).type=='N' )      
+                % text(Sensors(i).xd+1,Sensors(i).yd-1,num2str(i));
                 % plot(Sensors(i).xd,Sensors(i).yd,'o');
                 plot(Sensors(i).xd,Sensors(i).yd,'ko', 'MarkerSize', 5, 'MarkerFaceColor', 'k');
             else %Sensors.type=='C'       
+                %  text(Sensors(i).xd+1,Sensors(i).yd-1,num2str(i));
                 % plot(Sensors(i).xd,Sensors(i).yd,'kx','MarkerSize',10);
                 plot(Sensors(i).xd,Sensors(i).yd,'ko', 'MarkerSize', 5, 'MarkerFaceColor', 'r');
             end
@@ -21,6 +23,7 @@ function deadNum=LEACH_plotter(Sensors,Model)
         else
             deadNum=deadNum+1;
             % plot(Sensors(i).xd,Sensors(i).yd,'red .');
+            % text(Sensors(i).xd+1,Sensors(i).yd-1,num2str(i));
             plot(Sensors(i).xd,Sensors(i).yd,'ko', 'MarkerSize',5, 'MarkerFaceColor', 'w');
         end
         

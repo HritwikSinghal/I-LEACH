@@ -47,7 +47,7 @@ HpacketLen=100;
 %Number of Packets sended in steady-state phase
 NumPacket=10;
 
-%Redio Range
+%Radio Range
 RR=0.5*Area.x*sqrt(2);
 
 % I-LEACH

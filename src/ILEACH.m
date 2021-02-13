@@ -124,21 +124,22 @@ for r=1:1:Model.rmax
     
 %%%%%%%%%%%%%%%%%%%%%%% end of cluster head election phase %%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%% plot network status in end of set-up phase 
+%%%%%%%%%%%%%%%%%%%%%%% plot network status in end of set-up phase
+%%%%%%%%%%%%%%%%%%%%%%% this will draw lines from every node to its CH
 
-%    for i=1:n
-%
-%        if (Sensors(i).type=='N' && Sensors(i).dis2ch<Sensors(i).dis2sink && ...
-%                Sensors(i).E>0)
-%
-%            % XL=[Sensors(i).xd ,Sensors(Sensors(i).MCH).xd];
-%            % YL=[Sensors(i).yd ,Sensors(Sensors(i).MCH).yd];
-%            hold on
-%            % line(XL,YL)
-%
-%        end
-%
-%    end
+%     for i=1:n
+%         
+%         if (Sensors(i).type=='N' && Sensors(i).dis2ch<Sensors(i).dis2sink && ...
+%                 Sensors(i).E>0)
+%             
+%             XL=[Sensors(i).xd ,Sensors(Sensors(i).MCH).xd];
+%             YL=[Sensors(i).yd ,Sensors(Sensors(i).MCH).yd];
+%             hold on
+%             line(XL,YL)
+%             
+%         end
+%         
+%     end
     
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% steady-state phase %%%%%%%%%%%%%%%%%
     NumPacket=Model.NumPacket;
