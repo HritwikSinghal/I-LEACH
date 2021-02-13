@@ -1,4 +1,4 @@
-function [Area,Model]=setParameters(n)
+function [Area,Model]=LEACH_setParameters(n)
 %% Developed by Amin Nazari 
 % 	aminnazari91@gmail.com 
 %	0918 546 2272
@@ -34,7 +34,7 @@ do=sqrt(Efs/Emp);
 
 %%%%%%%%%%%%%%%%%%%%%%%%% Run Time Parameters %%%%%%%%%%%%%%%%%%%%%%%%%
 %maximum number of rounds
- rmax=200;
+rmax=200;
 
 %Data packet size
 DpacketLen=4000;

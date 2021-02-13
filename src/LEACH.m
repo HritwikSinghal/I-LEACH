@@ -11,13 +11,13 @@ tic;
 %% Create sensor nodes, Set Parameters and Create Energy Model 
 %%%%%%%%%%%%%%%%%%%%%%%%% Initial Parameters %%%%%%%%%%%%%%%%%%%%%%%
 n=200;                                  %Number of Nodes in the field
-[Area,Model]=setParameters(n);     		%Set Parameters Sensors and Network
+[Area,Model]=LEACH_setParameters(n);     		%Set Parameters Sensors and Network
 
 %%%%%%%%%%%%%%%%%%%%%%%%% configuration Sensors %%%%%%%%%%%%%%%%%%%%
 CreateRandomSen(Model,Area);            %Create a random scenario
 load Locations                          %Load sensor Location
-Sensors=ConfigureSensors(Model,n,X,Y);
-ploter(Sensors,Model);                  %Plot sensors
+Sensors=LEACH_ConfigureSensors(Model,n,X,Y);
+LEACH_plotter(Sensors,Model);                  %Plot sensors
 
 %%%%%%%%%%%%%%%%%%%%%%%%%% Parameters initialization %%%%%%%%%%%%%%%%
 countCHs=0;         %counter for CHs
@@ -94,7 +94,7 @@ for r=1:1:Model.rmax
     end
     
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% plot sensors %%%%%%%%%%%%%%%%%%%%%%%
-    deadNum=ploter(Sensors,Model);
+    deadNum=LEACH_plotter(Sensors,Model);
     
     %Save r'th period When the first node dies
     if (deadNum>=1)      
@@ -106,7 +106,7 @@ for r=1:1:Model.rmax
     
 %%%%%%%%%%%%%%%%%%%%%%% cluster head election %%%%%%%%%%%%%%%%%%%
     %Selection Candidate Cluster Head Based on LEACH Set-up Phase
-    [TotalCH,Sensors]=SelectCH(Sensors,Model,r); 
+    [TotalCH,Sensors]=LEACH_SelectCH(Sensors,Model,r); 
     
     %Broadcasting CHs to All Sensor that are in Radio Rage CH.
     for i=1:length(TotalCH)
@@ -123,13 +123,28 @@ for r=1:1:Model.rmax
     
 %%%%%%%%%%%%%%%%%%%%%%% end of cluster head election phase %%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%% plot network status in end of set-up phase 
+
+%    for i=1:n
+%
+%        if (Sensors(i).type=='N' && Sensors(i).dis2ch<Sensors(i).dis2sink && ...
+%                Sensors(i).E>0)
+%
+%            % XL=[Sensors(i).xd ,Sensors(Sensors(i).MCH).xd];
+%            % YL=[Sensors(i).yd ,Sensors(Sensors(i).MCH).yd];
+%            hold on
+%            % line(XL,YL)
+%
+%        end
+%
+%    end
     
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% steady-state phase %%%%%%%%%%%%%%%%%
     NumPacket=Model.NumPacket;
     for i=1:1:1%NumPacket 
         
         %Plotter     
-        deadNum=ploter(Sensors,Model);
+        deadNum=LEACH_plotter(Sensors,Model);
         
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% All sensor send data packet to  CH 
         for j=1:length(TotalCH)
@@ -210,6 +225,7 @@ STATISTICS.Alive(r+1)=n-deadNum;
 STATISTICS.Energy(r+1)=SumEnergyAllSensor(r+1);
 x=r+1;
 end % for r=0:1:rmax
+
 r=1:x-1;
 figure(2)
 plot(r,STATISTICS.Alive(r+1));
@@ -218,14 +234,11 @@ ylabel 'No of live sensor Nodes';
 title('Life time of Sensor Nodes')
 
 
-
-
 figure(3)
 plot(r,STATISTICS.Energy(r+1));
 xlabel 'Rounds';
 ylabel 'Energy(in j)';
 title('Average Residual energy ');
-
 disp('End of Simulation');
 toc;
 disp('Create Report...')
