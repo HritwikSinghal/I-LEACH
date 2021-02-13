@@ -16,7 +16,7 @@ n=200;                                  %Number of Nodes in the field
 %%%%%%%%%%%%%%%%%%%%%%%%% configuration Sensors %%%%%%%%%%%%%%%%%%%%
 CreateRandomSen(Model,Area);            %Create a random scenario
 load Locations                          %Load sensor Location
-Sensors=ConfigureSensors(Model,n,X,Y);
+Sensors=LEACH_configureSensors(Model,n,X,Y);
 LEACH_plotter(Sensors,Model);                  %Plot sensors
 
 %%%%%%%%%%%%%%%%%%%%%%%%%% Parameters initialization %%%%%%%%%%%%%%%%
@@ -106,7 +106,7 @@ for r=1:1:Model.rmax
     
 %%%%%%%%%%%%%%%%%%%%%%% cluster head election %%%%%%%%%%%%%%%%%%%
     %Selection Candidate Cluster Head Based on LEACH Set-up Phase
-    [TotalCH,Sensors]=LEACH_SelectCH(Sensors,Model,r); 
+    [TotalCH,Sensors]=LEACH_selectCH(Sensors,Model,r); 
     
     %Broadcasting CHs to All Sensor that are in Radio Rage CH.
     for i=1:length(TotalCH)
